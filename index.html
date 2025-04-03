@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Login & Register</title>
+    <style>
+        .form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Logo</p>
+            </div>
+
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#" class="link">Home</a></li>
+                    <li><a href="#" class="link">About</a></li>
+                    <li><a href="#" class="link">Services</a></li>
+                    <li><a href="#" class="link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-btn">
+                <button class="btn" id="sign-btn">SignUp</button>
+                <button class="btn" id="Login">Login</button>
+            </div>
+        </nav>
+
+        <!-- SignUp Form -->
+        <div class="form-container">
+            <form class="form" id="form1">
+                <div class="register-container">
+                    <header>Sign Up</header>
+                </div>
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="First Name" required>
+                    </div>
+        
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Last Name" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" required>
+                    </div>
+        
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" required>
+                    </div>
+                </div>  
+                <div class="submit">
+                    <button class="butn" type="submit">Submit</button>
+                </div>  
+            </form>
+
+            <!-- Login Form -->
+            <form class="form" id="form2">
+                <div class="register-container">
+                    <header>Login</header>
+                </div>
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" required>
+                    </div>
+        
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="submit">
+                    <button class="butn" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="taskContainer" style="display: none;">
+        <h2>Task List</h2>
+    
+        <input type="text" id="searchInput" placeholder="Search tasks" oninput="debouncedSearch()">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button id="addTaskBtn">Add Task</button>
+    
+ 
+        <label for="sortTodos">Sort by:</label>
+        <select id="sortTodos" onchange="updateSortOrder()">
+            <option value="date">Date (Newest First)</option>
+            <option value="name">Name (A-Z)</option>
+            <option value="priority">Priority(complete -> pending)</option>
+        </select>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="taskBody"></tbody>
+        </table>
+    
+        <div id="paginationControls">
+            <button id="prevPageBtn" onclick="prevPage()">Previous</button>
+            <span id="pageNumber">Page</span>
+            <button id="nextPageBtn" onclick="nextPage()">Next</button>
+        </div>
+        
+
+        <button onclick="logoutUser()" id="logoutBtn">Logout</button>
+    </div>
+    
+
+<script type="module" src="index.js"></script>
+<script type="module" src="auth.js"></script>
+<script type="module" src="todo.js"></script>
+
+
+</body>
+</html>
+
+
+
+   
+
+
