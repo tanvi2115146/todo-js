@@ -90,21 +90,30 @@
         <h2>Task List</h2>
     
         <input type="text" id="searchInput" placeholder="Search tasks" oninput="debouncedSearch()">
+
         <input type="text" id="taskInput" placeholder="Enter a task">
+        
+        <select id="prioritySelect">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+
         <button id="addTaskBtn">Add Task</button>
     
- 
+        <br><br>
         <label for="sortTodos">Sort by:</label>
         <select id="sortTodos" onchange="updateSortOrder()">
             <option value="date">Date (Newest First)</option>
             <option value="name">Name (A-Z)</option>
-            <option value="priority">Priority(complete -> pending)</option>
+            <option value="priority">Priority(high -> low)</option>
         </select>
     
         <table border="1">
             <thead>
                 <tr>
                     <th>Task</th>
+                    <th>Priority</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>

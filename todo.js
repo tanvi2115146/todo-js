@@ -50,9 +50,13 @@ function saveTodo(taskTitle) {
         return;
     }
 
+    
+    let priority = document.getElementById("prioritySelect").value; 
+
     let todo = { 
         email: user.email, 
         taskTitle, 
+        priority,
         status: "Pending",  
         createdAt: new Date().toISOString() 
     };
@@ -95,8 +99,12 @@ function updateTaskList(todos) {
 
         // Task Title
         let taskCell = document.createElement("td");
-        taskCell.textContent = todo.taskTitle;
+        taskCell.textContent = todo.taskTitle; 
         taskCell.classList.add("task-title");
+
+      //priority 
+        let prioritycell = document.createElement("td");
+        prioritycell.textContent=todo.priority;
 
         // Status Dropdown 
         let statusCell = document.createElement("td");
@@ -127,6 +135,7 @@ function updateTaskList(todos) {
         actionCell.appendChild(deleteButton);
 
         row.appendChild(taskCell);
+        row.appendChild(prioritycell)
         row.appendChild(statusCell);
         row.appendChild(dateCell); 
         row.appendChild(actionCell);
@@ -269,15 +278,16 @@ window.debouncedSearch = debouncedSearch;
 function sortTodos(todos, criteria) {
     return todos.sort((a, b) => {
         if (criteria === "name") {
-            return a.taskTitle.localeCompare(b.taskTitle); 
+            return a.taskTitle.localeCompare(b.taskTitle);
         } else if (criteria === "date") {
             return new Date(b.createdAt) - new Date(a.createdAt);
         } else if (criteria === "priority") {
-            const priorityOrder = { "complete": 3, "in progress": 2, "pending": 1 };
-            return priorityOrder[b.status.toLowerCase()] - priorityOrder[a.status.toLowerCase()];
+            const priorityOrder = { "High": 3, "Medium": 2, "Low": 1 };
+            return priorityOrder[b.priority] - priorityOrder[a.priority];
         }
     });
 }
+
 
 
 function updateSortOrder() {

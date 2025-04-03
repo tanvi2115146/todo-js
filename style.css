@@ -152,11 +152,21 @@ h2 {
 }
 
 input[type="text"] {
-    width: 70%;
+    width: 60%;
     padding: 8px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+#prioritySelect, #sortTodos {
+    display: block;
+    width: 200px;
+    padding: 8px;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
 
 button {
