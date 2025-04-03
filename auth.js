@@ -83,7 +83,7 @@ function signupUser(event) {
 // Login function
 function loginUser(event) {
     event.preventDefault();
-    if (!validateForm("form2")) return;
+   
 
     const loginForm = document.getElementById("form2");
     let email = loginForm[0].value;
@@ -107,12 +107,24 @@ function loginUser(event) {
     loginForm.reset();
 }
 
-// Logout function
+
+//on refresh login
+document.addEventListener("DOMContentLoaded", () => {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    if (loggedUser) {
+        
+        loadTodos(loggedUser.email);
+        document.getElementById("taskContainer").style.display = "block";
+    }
+});
+
+
 function logoutUser() {
-    document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("loggedUser"); 
     document.getElementById("taskContainer").style.display = "none";
     alert("Logged out!");
+    location.reload(); 
 }
+
 
 export { showForm, signupUser, loginUser, logoutUser };

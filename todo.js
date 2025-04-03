@@ -264,7 +264,7 @@ const debouncedSearch = debounce(() => {
 }, 300);
 
 
-
+window.debouncedSearch = debouncedSearch;
 
 function sortTodos(todos, criteria) {
     return todos.sort((a, b) => {
